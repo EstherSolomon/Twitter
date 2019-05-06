@@ -1,0 +1,91 @@
+<html>
+    <head>
+      <style>
+	ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4199D4;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+		</style>
+		<meta charset="utf-8"/>
+        <meta charset="utf-8"/>
+
+        {% block head%}
+            <title>
+                {% block title %}
+                {% endblock %}
+            </title>
+             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        {% endblock %}
+    </head>
+    <body>
+
+        {% if user %}
+
+            <div>
+
+
+                    <ul>
+                       <li><style="font-size:48px"></i></li>
+                       <li><a class="active" href="/">Home</a></li>
+                        <li><a  href="/search-user">Seach User</a></li>
+                        <li><a  href="/search-content">Search Tweet</a></li>
+
+                        {% if username: %}
+                        <li> <a  href="/profile">Profile</a> </li>
+                        {% endif %}
+                        <li style="float:right"> <a  href="{{url}}">Log Out</a> </li>
+
+                    </ul>
+            </div>
+                </nav>
+            {% else %}
+
+                <div class="container">
+                    <div>
+                      <form action="/" method="post">
+                        <br>
+                        <br>
+                        <br>
+                        <div class="container" align = "center">
+                          <i class="fa fa-twitter fa-7x"></i>
+                          <h3 align = "center"> Welcome to Twitter Application</h3>
+                          <h3 align = "center"> Log In and get started </h3>
+                          <div align = "center"><button class="button button-block"/><a href="{{url}}">Log In</a> </button></div>
+                        </div>
+
+                    </div>
+              		 </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="container">
+            {% if user %}
+                {% block body %}{% endblock %}
+            {% endif %}
+        </div>
+    </body>
+</html>

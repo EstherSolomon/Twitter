@@ -1,0 +1,49 @@
+{% extends 'basicview.html' %}
+{% block title %} Home Page {% endblock %}
+{% block head %}
+    {{ super() }}
+{%  endblock %}
+{% block body %}
+    <div>
+        <h2>User Details</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">UserName: {{userInfo.user_name}}</div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-2">Email: {{userInfo.email}}</div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-2">Name: {{userInfo.first_name}} {{userInfo.last_name}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">Bio: {{userInfo.user_profile}}</div>
+    </div>
+    <div class="row">
+        <br><div class="col-md-2">Followed To:</div><br>
+        <div class="col-md-10">
+            <ul>
+                {% for followed_to in follow_info.followed_to: %}
+                <li>{{followed_to}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+      <br>  <div class="col-md-2">Followed By:</div><br>
+        <div class="col-md-10">
+            <ul>
+                {% for followed_by in follow_info.followed_by: %}
+                <li>{{followed_by}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div align = "center">
+        <a class="btn btn-primary" href="/profile-edit">Edit</a>
+    </div>
+{% endblock %}
